@@ -1,0 +1,65 @@
+const int analogInPin=A0;
+const int analogOutPin=9;
+int sensorValue=0;
+int outputValue=0;
+
+void setup() {
+  Serial.begin(9600);
+
+}
+
+void loop() {
+  sensorValue=analogRead(analogInPin);
+  if (sensorValue<10)
+  {
+    sensorValue=10;
+  }
+  outputValue=map(sensorValue,0,1023,0,255);
+  analogWrite(analogOutPin,outputValue);
+  Serial.print("Sensor =");
+  Serial.print(sensorValue);
+  Serial.print("\t output=");
+  Serial.println(outputValue);
+  delay(2);
+}
+
+
+
+
+
+
+
+
+
+
+
+
+#PWM using digital output
+
+int led=10;
+
+int Ontime = 10;
+
+int Offtime = 20;
+
+void setup() {
+
+pinMode(led, OUTPUT);
+
+Serial.begin(9600);
+
+} void loop() {
+
+Serial.println("led PWM");
+
+digitalWrite(led,HIGH);
+
+delay(Ontime);
+
+digitalWrite(led,LOW);
+
+delay(Offtime);
+
+Serial.print(led);
+
+}
